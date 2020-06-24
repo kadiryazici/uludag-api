@@ -49,10 +49,15 @@ const fetchData = (callback) => {
           .text();
         result.uye_foto = `https://www.uludagsozluk.com/rs/profil/img/harf/${result.yazar[0]}.jpg`;
 
+        result.tarih = $(element).find('.tarih .oy4').text();
+
         array.push(result);
       });
       callback(array);
     });
 };
 
-module.exports = fetchData;
+module.exports = {
+  fetchData,
+  fixedEntry,
+};
