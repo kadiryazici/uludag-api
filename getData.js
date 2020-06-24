@@ -4,11 +4,9 @@ const fetch = require("node-fetch");
 const fixedEntry = ($, v) => {
   let fixedEntry = $(v).find(".ent");
   fixedEntry.html(fixedEntry.html().replace(/\(bkz:/g, ""));
+
   fixedEntry.find("a").each((i, element) => {
     let href = $(element).attr("href");
-    console.log({
-      href,
-    });
     if ($(element).text() == "spoiler") {
       $(element).attr("href", "#");
     } else {
@@ -19,9 +17,9 @@ const fixedEntry = ($, v) => {
           $(element).text(
             `(bkz: ${href.replace(/\/k?/g, "").split("-").join(" ")})`
           );
-        } else {
-          $(element).text(href);
         }
+      } else {
+        $(element).text(href);
       }
     }
   });
@@ -52,7 +50,6 @@ const fetchData = (callback) => {
         result.uye_foto = `https://www.uludagsozluk.com/rs/profil/img/harf/${result.yazar[0]}.jpg`;
 
         array.push(result);
-        console.log(i + " YENİ ENTRY");
       });
       callback(array);
     });
