@@ -2,10 +2,10 @@
   "name": "uludag-express-api",
   "version": "1.0.0",
   "description": "to fetch data from uludagsozluk.com",
-  "main": "server.js",
+  "main": "server.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node --experimental-modules server/server.mjs "
   },
   "author": "kadir",
   "license": "MIT",
