@@ -9,7 +9,7 @@ const update = async () => {
   }
   let jsonContent = JSON.stringify(entries);
 
-  fs.writeFile("server/data.json", jsonContent, (err) => {
+  fs.writeFileSync("server/data.json", jsonContent, (err) => {
     if (err) {
       return console.log(err);
     }
