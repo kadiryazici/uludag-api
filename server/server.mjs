@@ -7,6 +7,7 @@ import { fetchImage } from "./functions.mjs";
 
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import fetch from "node-fetch";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -34,7 +35,10 @@ app.use((req, res, next) => {
 
 //Getting all entries
 app.get("/", async (req, response) => {
-  response.sendFile(join(__dirname, "data.json"));
+  let res = await fetch(
+    "https://vuedag-sozluk.firebaseio.com/.json?auth=tQIrIH8OCGzKTSC4UmeTjUxkXwDkU36ZNy2fPryY"
+  ).then((res) => res.json());
+  response.send(res);
 });
 
 //Getting only one entry
