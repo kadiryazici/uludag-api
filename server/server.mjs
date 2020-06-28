@@ -1,10 +1,21 @@
 import express from "express";
 const app = express();
+import rateLimit from "express-rate-limit";
 
-import { fetchMain, fetchSingleEntry } from "./getData.mjs";
+import { fetchSingleEntry } from "./getData.mjs";
 import { fetchImage } from "./functions.mjs";
 
+import * as data from "./data.json";
+console.log(data);
+
 const port = process.env.PORT || 3000;
+
+const limiter = rateLimit({
+  windowMs: 10000,
+  max: 200,
+  message: "Too many requests from this IP, please try again",
+});
+app.use(limiter);
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -19,11 +30,7 @@ app.use((req, res, next) => {
 
 //Getting all entries
 app.get("/", async (req, response) => {
-  let entries = await fetchMain().then((val) => val);
-  for (let i = 0; i < entries.length; i++) {
-    entries[i].uye_foto = await fetchImage(entries[i].yazar).then((res) => res);
-  }
-  response.send(JSON.stringify(entries));
+  response.send(JSON.stringify(data));
 });
 
 //Getting only one entry

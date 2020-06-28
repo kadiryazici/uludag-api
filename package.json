@@ -5,7 +5,8 @@
   "main": "server.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --experimental-modules server/server.mjs "
+    "start": "node --experimental-json-modules --experimental-modules server/server.mjs ",
+    "update": "node --experimental-json-modules --experimental-modules server/fetch.mjs"
   },
   "author": "kadir",
   "license": "MIT",
@@ -13,6 +14,7 @@
     "cheerio": "^1.0.0-rc.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-rate-limit": "^5.1.3",
     "node-fetch": "^2.6.0"
   }
 }
