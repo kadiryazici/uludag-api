@@ -30,7 +30,10 @@ export const fixedEntry = ($, v, className) => {
       }
     }
   });
-  let fixedHtml = fixed.html().replace(/(<([^>]+)>)/gi, "");
+  let fixedHtml = fixed
+    .html()
+    .replace(/(<([^>]+)>)/gi, "")
+    .trim();
   return fixedHtml.replace(/&quot;/g, `\"`);
 };
 

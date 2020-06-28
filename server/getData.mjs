@@ -47,14 +47,21 @@ export const fetchSingleEntry = async (id) => {
   let $ = cheerio.load(data);
   let object = {
     baslik: $(".tekentry-baslik a").text(),
+
     metin: fixedEntry($, ".entry-list", ".entry-p"),
+
     yazar: $(".alt-u.yazar").text(),
+
     tarih: $(".entry-date")
       .children()
       .remove()
       .end()
       .text()
       .replace(/\n?\t?\s?/g, ""),
+
+    arti_oy: $(".entry-secenekleri .oylar.arti_sayi").text(),
+
+    eksi_oy: $(".entry-secenekleri .oylar.eksi_sayi").text(),
   };
   object.uye_foto = await fetchImage(object.yazar).then((res) => res);
   return object;
