@@ -10,7 +10,8 @@ const update = async () => {
   }
 
   fetch(
-    "https://vuedag-sozluk.firebaseio.com/.json?auth=tQIrIH8OCGzKTSC4UmeTjUxkXwDkU36ZNy2fPryY",
+    "https://vuedag-sozluk.firebaseio.com/.json?auth=" +
+      process.env.FIREBASE_SECRET,
     {
       method: "PUT",
       body: JSON.stringify(entries),
