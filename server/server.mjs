@@ -10,6 +10,8 @@ import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+console.log(__dirname);
+
 const port = process.env.PORT || 3000;
 
 const limiter = rateLimit({

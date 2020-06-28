@@ -9,14 +9,17 @@ const update = async () => {
   }
   let jsonContent = JSON.stringify(entries);
 
-  fs.writeFileSync("server/data.json", jsonContent, (err) => {
-    if (err) {
-      return console.log(err);
-    }
+  const write = async () => {
+    fs.writeFileSync("server/data.json", jsonContent, (err) => {
+      if (err) {
+        return console.log(err);
+      }
 
-    console.log("JSON saved");
-    process.exit();
-  });
+      console.log("JSON saved");
+      process.exit();
+    });
+  };
+  write();
 };
 
 update();
