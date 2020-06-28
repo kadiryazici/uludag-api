@@ -5,8 +5,10 @@ import rateLimit from "express-rate-limit";
 import { fetchSingleEntry } from "./getData.mjs";
 import { fetchImage } from "./functions.mjs";
 
-import * as data from "./data.json";
-console.log(data);
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const port = process.env.PORT || 3000;
 
@@ -30,7 +32,7 @@ app.use((req, res, next) => {
 
 //Getting all entries
 app.get("/", async (req, response) => {
-  response.send(JSON.stringify(data.default));
+  response.sendFile(join(__dirname, "data.json"));
 });
 
 //Getting only one entry
