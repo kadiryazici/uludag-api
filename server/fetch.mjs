@@ -15,6 +15,7 @@ const update = async () => {
     }
 
     console.log("JSON saved");
+    process.exit();
   });
 };
 
