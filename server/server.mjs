@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 
 //Getting all entries
 app.get("/", async (req, response) => {
-  response.send(JSON.stringify(data));
+  response.send(JSON.stringify(data.default));
 });
 
 //Getting only one entry
