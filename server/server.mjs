@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 //Getting all entries
 app.get("/", async (req, response) => {
   let res = await fetch(
-    "https://vuedag-sozluk.firebaseio.com/.json?auth" +
+    "https://vuedag-sozluk.firebaseio.com/.json?auth=" +
       process.env.FIREBASE_SECRET
   ).then((res) => res.json());
   response.send(res);
